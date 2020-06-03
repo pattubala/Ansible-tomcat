@@ -1,0 +1,5 @@
+---
+- name: Install Java 1.8
+  apt: 
+    name: "{{ jdk_pkg_name }}"
+    state: present

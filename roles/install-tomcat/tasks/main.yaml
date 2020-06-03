@@ -1,0 +1,35 @@
+---
+- name: Download Tomcat
+  get_url: 
+    url: "{{ tomcat_download_url }}"
+    dest: "/opt/{{ apache-tomcat-8.5.55.zip }}"
+
+- name: Extract archive
+  unarchive:
+    src: "/opt/{{ apache-tomcat-8.5.55.zip }}"
+    dest: /opt/tomcat
+    remote_src: yes
+
+- name: Configure Tomcat server
+  template:
+    src: server.xml 
+    dest: /opt/tomcat/conf/
+  notify: restart tomcat
+
+- name: Configure Tomcat users
+  template: 
+    src: tomcat-users.xml 
+    dest: /opt/tomcat/conf/
+  notify: restart tomcat
+
+- name: Install Tomcat init script
+  copy: 
+    src: tomcat-initscript.sh
+    dest: /etc/init.d/tomcat
+    mode: 0755
+
+- name: Start Tomcat
+  service: 
+    name: tomcat 
+    state: started 
+    enabled: yes

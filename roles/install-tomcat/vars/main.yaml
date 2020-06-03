@@ -1,0 +1,6 @@
+# These variables used by install-tomcat role
+http_port: 8080
+admin_username: admin
+admin_password: admin
+tomcat_download_url: https://mirror.nohup.it/apache/tomcat/tomcat-8/v8.5.55/bin/apache-tomcat-8.5.55.zip
+tomcat_package_name: apache-tomcat-8.5.55.zip
