@@ -5,11 +5,11 @@ After=syslog.target network.target
 [Service]
 Type=forking
 
-ExecStart=/opt/sonarqube/bin/linux-x86-64/sonar.sh start
-ExecStop=/opt/sonarqube/bin/linux-x86-64/sonar.sh stop
+ExecStart=/opt/tomcat/bin/startup.sh
+ExecStop=/opt/tomcat/bin/shutdown.sh
 
-User=sonar
-Group=sonar
+User=root
+Group=root
 Restart=always
 
 [Install]
